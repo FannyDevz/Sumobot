@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7qeonfogiwbg"]
+
+[ext_resource type="Script" path="res://arena.gd" id="1_h50tx"]
+[ext_resource type="Script" path="res://robotai.gd" id="2_3cy0g"]
+[ext_resource type="Script" path="res://robot.gd" id="2_08o0p"]
+[ext_resource type="Texture2D" uid="uid://1utlve4evpvi" path="res://icon.svg" id="3_jb75k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nqsfc"]
+radius = 300.426
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_78mrf"]
+
+[node name="Root" type="Node2D"]
+metadata/_edit_vertical_guides_ = [300.0]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Arena" type="Node2D" parent="."]
+script = ExtResource("1_h50tx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena"]
+shape = SubResource("CircleShape2D_nqsfc")
+
+[node name="Robots" type="Node2D" parent="Arena"]
+
+[node name="Robot1" type="CharacterBody2D" parent="Arena/Robots"]
+position = Vector2(-162, -4)
+script = ExtResource("2_08o0p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Robots/Robot1"]
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_78mrf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Arena/Robots/Robot1"]
+texture = ExtResource("3_jb75k")
+
+[node name="Robot2" type="CharacterBody2D" parent="Arena/Robots"]
+position = Vector2(150, 0)
+script = ExtResource("2_3cy0g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Robots/Robot2"]
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_78mrf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Arena/Robots/Robot2"]
+texture = ExtResource("3_jb75k")
